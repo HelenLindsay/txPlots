@@ -1,0 +1,12 @@
+Package: txPlots
+Type: Package
+Title: Plotting Functions For Transcriptomics
+Version: 0.1.0
+Author: Helen Lindsay
+Maintainer: Helen Lindsay <helen.lindsay@chuv.ch>
+Description: So far just some plots for gene set enrichment.
+License: What license is it under?
+Encoding: UTF-8
+Imports: 
+    dplyr,
+    ggplot2
