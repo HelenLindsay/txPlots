@@ -12,10 +12,9 @@
 #'@param ysize y axis text size (default 6)
 #'@author Helen Lindsay
 #'@returns A ggplot tile plot, with black tiles indicating gene presence.
-geneSetMembers <- function(gene_sets, xsize=6, ysize=2){
+geneSetMembers <- function(gene_sets, xsize = 6, ysize = 2){
 
-    df <- tibble::tibble(gene_set = rep(gene_sets, lengths(gene_sets)),
-                         gene = unlist(gene_sets))
+    df <- .geneset_to_tbl(gene_sets)
 
     # Order the genes by first appearance
     tt <- t(table(df[, c("gene_set", "gene")]))
@@ -35,4 +34,10 @@ geneSetMembers <- function(gene_sets, xsize=6, ysize=2){
               panel.grid.major = element_blank()) +
         labs(x = NULL, y = NULL) +
         coord_fixed() # makes the boxes square
+}
+
+# .geneset_to_tbl ---
+.geneset_to_tbl <- function(gene_sets){
+    df <- tibble::tibble(gene_set = rep(gene_sets, lengths(gene_sets)),
+                         gene = unlist(gene_sets))
 }
