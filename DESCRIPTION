@@ -11,6 +11,7 @@ Imports:
     dplyr,
     ggplot2,
     khroma,
+    patchwork,
     magrittr,
     scales,
     stats,

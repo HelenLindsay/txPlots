@@ -21,7 +21,7 @@
 #'@importFrom stats hclust dist
 #'@importFrom ggplot2 ggplot aes geom_tile
 #'@importFrom ggplot2 theme theme_bw
-#'@importFrom ggplot2 element_text
+#'@importFrom ggplot2 element_text element_blank margin
 plotMetadata <- function(df, id, discrete = 10){
     col_classes <- unlist(lapply(df, class))
     n_vals <- apply(df, 2, function(x) length(unique(x)))
@@ -51,5 +51,27 @@ plotMetadata <- function(df, id, discrete = 10){
         ggplot2::theme(axis.text.x =
                            element_text(angle = 90, hjust = 1, vjust = 0.5),
                        axis.text.y = element_text(size = y_size)) +
-        ggplot2::scale_fill_manual(values = c("black", "white"))
+        ggplot2::scale_fill_manual(values = c("white", "black"))
+}
+
+# .plot_loc ----
+#'Adjust plot margins for plotting in a panel
+#'@param p A ggplot
+#'@param loc Either "l" for left, "m" for middle or "r" for right
+.plot_loc <- function(p, loc = c("l", "m", "r")){
+    loc <- match.arg(loc)
+    # If it is the rightmost or middle plot, remove y.axis labels and ticks,
+    # set left margin to zero
+    if (loc %in% c("r", "m")){
+        p <- p +
+            theme(axis.ticks.length.y = ggplot2::unit(0,'lines'),
+                  axis.text.y = element_blank(),
+                  plot.margin = margin(l = 0))
+    }
+
+    # If it is the leftmost or middle plot, set the right margin to zero
+    if (loc %in% c("l", "m")){
+        p <- p + theme(plot.margin = margin(r = 0))
+    }
+    return(p)
 }
