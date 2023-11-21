@@ -75,3 +75,12 @@ plotMetadata <- function(df, id, discrete = 10){
     }
     return(p)
 }
+
+
+.select_palettes <- function(){
+    # For continuous, use viridis, plasma
+
+
+}
+
+# To do - theme boxplot with jitter points
