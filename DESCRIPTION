@@ -8,6 +8,7 @@ Description: So far just some plots for gene set enrichment.
 License: GPL (>= 3)
 Encoding: UTF-8
 Imports: 
+    cowplot,
     dplyr,
     ggplot2,
     khroma,

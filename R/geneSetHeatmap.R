@@ -38,17 +38,18 @@ geneSetHeatmap <- function(dat, x, y, fill, xsize=2, ysize=6, mid=0.05,
     }
 
     ggplot(dat, aes(x={{x}}, y={{y}}, fill={{fill}})) +
-        geom_tile() +
-        scale_fill_viridis_c(direction=-1, # Make small p-vals yellow not blue
+        ggplot2::geom_tile() +
+        # Make small p-vals yellow not blue
+        ggplot2::scale_fill_viridis_c(direction=-1,
                              values=scales::rescale(c(0, mid, 1)),
                              limits=c(0, 1)) +
-        theme_bw() +
+        ggplot2::theme_bw() +
         theme(axis.text.x = element_text(angle = 90,
                                          hjust = 1,
                                          vjust = 0.5,
                                          size = xsize),
               axis.text.y = element_text(size = ysize),
               panel.grid.major = element_blank()) +
-        labs(x = NULL, y = NULL, fill = legend_lab) +
-        coord_fixed() # makes the boxes square
+        ggplot2::labs(x = NULL, y = NULL, fill = legend_lab) +
+        ggplot2::coord_fixed() # makes the boxes square
 }
