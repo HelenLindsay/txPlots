@@ -1,2 +1,3 @@
 # txPlots
-Plots for transcriptomic analyses
+
+A place where I save useful things I've come across when plotting (generally transcriptomic data).   
