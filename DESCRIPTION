@@ -11,11 +11,14 @@ Imports:
     cowplot,
     dplyr,
     ggplot2,
+    ggrastr,
+    ggrepel,
     khroma,
     patchwork,
     magrittr,
     scales,
     stats,
     tibble,
-    tidyr
+    tidyr,
+    utils
 RoxygenNote: 7.2.3
